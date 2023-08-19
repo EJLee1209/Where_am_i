@@ -9,6 +9,7 @@ import Foundation
 import CoreLocation
 import RxSwift
 import RxRelay
+import RxCocoa
 
 class BaseViewModel: NSObject {
     
@@ -21,4 +22,6 @@ class BaseViewModel: NSObject {
     init(locationProvider: LocationProviderType) {
         self.locationProvider = locationProvider
     }
+    
+    
 }
