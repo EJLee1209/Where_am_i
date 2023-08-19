@@ -11,12 +11,17 @@ import Foundation
 import CoreLocation
 import RxDataSources
 import UIKit
+import MapKit
 
 final class MapViewModel: BaseViewModel {
     
     let searchText: BehaviorSubject<String> = .init(value: "")
     
     let searchResult: BehaviorRelay<[SearchSectionModel]> = .init(value: [])
+    
+    let selectedItem: PublishSubject<MKLocalSearchCompletion> = .init()
+    let selectedLocation: PublishRelay<CLLocation> = .init()
+    let selectedAddress: BehaviorRelay<String> = .init(value: "")
     
     override init(locationProvider: LocationProviderType, searchService: SearchServiceType) {
         super.init(locationProvider: locationProvider, searchService: searchService)
@@ -35,6 +40,23 @@ final class MapViewModel: BaseViewModel {
         
         searchService.fetchResult()
             .bind(to: searchResult)
+            .disposed(by: bag)
+        
+        selectedItem
+            .withUnretained(self)
+            .flatMap { viewModel,item in
+                viewModel.searchService.search(for: item)
+            }
+            .compactMap { $0 }
+            .bind(to: selectedLocation)
+            .disposed(by: bag)
+        
+        selectedLocation
+            .withUnretained(self)
+            .flatMap { viewModel, location in
+                viewModel.locationProvider.reverseGeoCodeLocatoin(location: location)
+            }
+            .bind(to: selectedAddress)
             .disposed(by: bag)
     }
     

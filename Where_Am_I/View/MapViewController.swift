@@ -92,6 +92,14 @@ final class MapViewController : UIViewController, BaseViewController {
             .compactMap { $0 }
             .bind(to: viewModel.searchText)
             .disposed(by: bag)
+        
+        viewModel.selectedLocation
+            .bind(to: mapView.rx.setRegionFromLocation, latLabel.rx.latitude, lonLabel.rx.longitude)
+            .disposed(by: bag)
+        
+        viewModel.selectedAddress
+            .bind(to: addressLabel.rx.text, rx.title)
+            .disposed(by: bag)
     }
     
     //MARK: - LifeCycle

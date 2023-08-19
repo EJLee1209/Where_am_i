@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import MapKit
 
 final class SearchViewController: UIViewController {
     
@@ -30,6 +31,12 @@ final class SearchViewController: UIViewController {
             .asDriver()
             .drive(tableView.rx.items(dataSource: viewModel.searchResultDataSource))
             .disposed(by: bag)
+        
+        tableView.rx.modelSelected(MKLocalSearchCompletion.self)
+            .flatMap { $0 }
+            .bind(to: viewModel.selectedItem)
+            .disposed(by: bag)
+        
     }
     
     //MARK: - LifeCycle

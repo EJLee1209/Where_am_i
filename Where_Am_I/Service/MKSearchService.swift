@@ -38,12 +38,35 @@ class MKSearchService: SearchServiceType {
         
     }
     
-    func search(for suggestedCompletion: MKLocalSearchCompletion) {
+    func search(for suggestedCompletion: MKLocalSearchCompletion) -> Observable<CLLocation?> {
+        let searchRequest = MKLocalSearch.Request(completion: suggestedCompletion)
         
-    }
-    
-    func search(using searchRequest: MKLocalSearch.Request) -> RxSwift.Observable<CLLocation> {
-        return Observable.empty()
+        searchRequest.region = MKCoordinateRegion(.world)
+        searchRequest.resultTypes = .address
+        let localSearch = MKLocalSearch(request: searchRequest)
+        
+        return Observable.create { observer in
+            
+            localSearch.start { response, error in
+                if let error = error {
+                    observer.onError(error)
+                    return
+                }
+                
+                guard let coord = response?.mapItems[0].placemark.coordinate else {
+                    observer.onNext(nil)
+                    return
+                }
+                
+                let location = CLLocation(latitude: coord.latitude, longitude: coord.longitude)
+                
+                observer.onNext(location)
+                
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }.catchAndReturn(nil)
     }
     
     func fetchResult() -> Observable<[SearchSectionModel]> {
