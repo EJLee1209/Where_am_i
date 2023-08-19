@@ -18,6 +18,12 @@
 		CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CA52A90BAEF005FA27A /* MapViewModel.swift */; };
 		CF0E0CA92A90BC6E005FA27A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E0CA82A90BC6E005FA27A /* SnapKit */; };
 		CF0E0CAB2A90BDC0005FA27A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CAA2A90BDC0005FA27A /* SearchViewController.swift */; };
+		CF0E0CAD2A90C165005FA27A /* LocationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CAC2A90C165005FA27A /* LocationProviderType.swift */; };
+		CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CAE2A90C28C005FA27A /* LocationProvider.swift */; };
+		CF0E0CB22A90C30A005FA27A /* CoreLocation+Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */; };
+		CF0E0CB42A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB32A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift */; };
+		CF0E0CB62A90C5D5005FA27A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */; };
+		CF0E0CB82A90C6BD005FA27A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		CF0E0CA22A90BAB6005FA27A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CF0E0CA52A90BAEF005FA27A /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		CF0E0CAA2A90BDC0005FA27A /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		CF0E0CAC2A90C165005FA27A /* LocationProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProviderType.swift; sourceTree = "<group>"; };
+		CF0E0CAE2A90C28C005FA27A /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreLocation+Place.swift"; sourceTree = "<group>"; };
+		CF0E0CB32A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCLLocationManagerDelegateProxy.swift; sourceTree = "<group>"; };
+		CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,7 @@
 				CF0E0CA02A90BAA9005FA27A /* Model */,
 				CF0E0C9F2A90BAA1005FA27A /* View */,
 				CF0E0C9E2A90BA9B005FA27A /* ViewModel */,
+				CF0E0CB02A90C2F5005FA27A /* Extension */,
 				CF0E0C8B2A90B9F0005FA27A /* Assets.xcassets */,
 				CF0E0C8D2A90B9F0005FA27A /* LaunchScreen.storyboard */,
 				CF0E0C902A90B9F0005FA27A /* Info.plist */,
@@ -82,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				CF0E0CA52A90BAEF005FA27A /* MapViewModel.swift */,
+				CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -91,6 +105,7 @@
 			children = (
 				CF0E0CA22A90BAB6005FA27A /* MapViewController.swift */,
 				CF0E0CAA2A90BDC0005FA27A /* SearchViewController.swift */,
+				CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -105,6 +120,9 @@
 		CF0E0CA12A90BAAC005FA27A /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				CF0E0CAC2A90C165005FA27A /* LocationProviderType.swift */,
+				CF0E0CAE2A90C28C005FA27A /* LocationProvider.swift */,
+				CF0E0CB32A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -116,6 +134,14 @@
 				CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		CF0E0CB02A90C2F5005FA27A /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,10 +226,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF0E0CAB2A90BDC0005FA27A /* SearchViewController.swift in Sources */,
+				CF0E0CB62A90C5D5005FA27A /* BaseViewModel.swift in Sources */,
+				CF0E0CB82A90C6BD005FA27A /* BaseViewController.swift in Sources */,
 				CF0E0C832A90B9F0005FA27A /* AppDelegate.swift in Sources */,
 				CF0E0CA32A90BAB6005FA27A /* MapViewController.swift in Sources */,
+				CF0E0CAD2A90C165005FA27A /* LocationProviderType.swift in Sources */,
+				CF0E0CB42A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */,
+				CF0E0CB22A90C30A005FA27A /* CoreLocation+Place.swift in Sources */,
 				CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */,
+				CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +377,8 @@
 				DEVELOPMENT_TEAM = EX6G2VC9J8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Where_Am_I/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자 위치의 위/경도 좌표값을 알려드립니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치의 위/경도 좌표값을 알려드립니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -376,6 +410,8 @@
 				DEVELOPMENT_TEAM = EX6G2VC9J8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Where_Am_I/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자 위치의 위/경도 좌표값을 알려드립니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치의 위/경도 좌표값을 알려드립니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

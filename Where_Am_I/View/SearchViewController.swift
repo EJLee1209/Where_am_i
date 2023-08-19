@@ -16,6 +16,7 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureUI()
     }
     
     private func configureUI() {

@@ -17,8 +17,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let startVC = MapViewController()
-        var nav = UINavigationController(rootViewController: startVC)
+        var startVC = MapViewController()
+        
+        let locationProvider = LocationProvider()
+        
+        let mapViewModel = MapViewModel(locationProvider: locationProvider)
+        
+        startVC.bind(viewModel: mapViewModel)
+        let nav = UINavigationController(rootViewController: startVC)
         
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

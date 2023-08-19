@@ -8,12 +8,17 @@
 import UIKit
 import MapKit
 import SnapKit
+import RxSwift
+import RxCocoa
 
-final class MapViewController : UIViewController {
+final class MapViewController : UIViewController, BaseViewController {
     
     //MARK: - Properties
     private let mapView = MKMapView()
+    private let searchController = UISearchController(searchResultsController: SearchViewController())
+    private let bag = DisposeBag()
     
+    var viewModel: MapViewModel!
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -23,19 +28,37 @@ final class MapViewController : UIViewController {
     }
     
     //MARK: - Helpers
-    private func configureUI() {
+    func bindViewModel() {
         
+        viewModel.currentLocation
+            .map {
+                MKCoordinateRegion(center: $0.coordinate, span: .init(latitudeDelta: 1, longitudeDelta: 1))
+            }
+            .bind(to: mapView.rx.region)
+            .disposed(by: bag)
         
-        view.backgroundColor = .white
-        navigationItem.title = "Where Am I?"
-        
-        view.addSubview(mapView)
-        mapView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.left.right.bottom.equalToSuperview()
-        }
+        mapView.showsUserLocation = true
+            
         
     }
     
-    
+    private func configureUI() {
+        view.backgroundColor = .white
+        navigationItem.title = "Where Am I?"
+        navigationItem.searchController = searchController
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white.withAlphaComponent(0.5)
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        view.addSubview(mapView)
+        mapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
 }
+
+
+
