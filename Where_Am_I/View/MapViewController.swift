@@ -15,7 +15,7 @@ final class MapViewController : UIViewController, BaseViewController {
     
     //MARK: - Properties
     private let mapView = MKMapView()
-    private let searchController = UISearchController(searchResultsController: SearchViewController())
+    private lazy var searchController = UISearchController(searchResultsController: SearchViewController(viewModel: viewModel))
     private let bag = DisposeBag()
     
     private let bottomBackgroundView: UIView = {
@@ -88,6 +88,10 @@ final class MapViewController : UIViewController, BaseViewController {
             .bind(to: addressLabel.rx.text, rx.title)
             .disposed(by: bag)
         
+        searchController.searchBar.rx.text
+            .compactMap { $0 }
+            .bind(to: viewModel.searchText)
+            .disposed(by: bag)
     }
     
     //MARK: - LifeCycle

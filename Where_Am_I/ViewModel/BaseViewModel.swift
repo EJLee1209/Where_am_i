@@ -18,9 +18,11 @@ class BaseViewModel: NSObject {
     let currentLocation = BehaviorRelay<CLLocation>(value: CLLocation.gangnamStation)
     
     let locationProvider: LocationProviderType
+    let searchService: SearchServiceType
     
-    init(locationProvider: LocationProviderType) {
+    init(locationProvider: LocationProviderType, searchService: SearchServiceType) {
         self.locationProvider = locationProvider
+        self.searchService = searchService
     }
     
     

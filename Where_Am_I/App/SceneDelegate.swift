@@ -20,8 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var startVC = MapViewController()
         
         let locationProvider = LocationProvider()
+        let searchService = MKSearchService()
         
-        let mapViewModel = MapViewModel(locationProvider: locationProvider)
+        let mapViewModel = MapViewModel(locationProvider: locationProvider, searchService: searchService)
         
         startVC.bind(viewModel: mapViewModel)
         let nav = UINavigationController(rootViewController: startVC)
