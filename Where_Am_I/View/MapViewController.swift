@@ -18,32 +18,40 @@ final class MapViewController : UIViewController, BaseViewController {
     private let searchController = UISearchController(searchResultsController: SearchViewController())
     private let bag = DisposeBag()
     
+    //MARK: - ViewModel
     var viewModel: MapViewModel!
+    func bindViewModel() {
+        
+        viewModel.currentLocation
+            .bind(to: mapView.rx.setRegionFromLocation)
+            .disposed(by: bag)
+    }
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        setupMapView()
+        setupNavigationBar()
     }
     
     //MARK: - Helpers
-    func bindViewModel() {
-        
-        viewModel.currentLocation
-            .map {
-                MKCoordinateRegion(center: $0.coordinate, span: .init(latitudeDelta: 1, longitudeDelta: 1))
-            }
-            .bind(to: mapView.rx.region)
-            .disposed(by: bag)
-        
-        mapView.showsUserLocation = true
-            
-        
-    }
     
     private func configureUI() {
         view.backgroundColor = .white
+        
+        view.addSubview(mapView)
+        mapView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func setupMapView() {
+        mapView.showsUserLocation = true
+    }
+    
+    private func setupNavigationBar() {
         navigationItem.title = "Where Am I?"
         navigationItem.searchController = searchController
         let appearance = UINavigationBarAppearance()
@@ -52,11 +60,6 @@ final class MapViewController : UIViewController, BaseViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        
-        view.addSubview(mapView)
-        mapView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
     }
 }
 
