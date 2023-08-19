@@ -12,8 +12,6 @@ import CoreLocation
 
 final class MapViewModel: BaseViewModel {
     
-    
-    
     override init(locationProvider: LocationProviderType) {
         super.init(locationProvider: locationProvider)
         

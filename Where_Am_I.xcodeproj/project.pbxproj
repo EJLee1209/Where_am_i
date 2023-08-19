@@ -25,6 +25,7 @@
 		CF0E0CB62A90C5D5005FA27A /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */; };
 		CF0E0CB82A90C6BD005FA27A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */; };
 		CF0E0CBA2A90C9AA005FA27A /* Reactive+MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CB92A90C9AA005FA27A /* Reactive+MapView.swift */; };
+		CF0E0CBC2A90CEF4005FA27A /* Reactive+UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CBB2A90CEF4005FA27A /* Reactive+UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CF0E0CB92A90C9AA005FA27A /* Reactive+MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+MapView.swift"; sourceTree = "<group>"; };
+		CF0E0CBB2A90CEF4005FA27A /* Reactive+UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UILabel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			children = (
 				CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */,
 				CF0E0CB92A90C9AA005FA27A /* Reactive+MapView.swift */,
+				CF0E0CBB2A90CEF4005FA27A /* Reactive+UILabel.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				CF0E0CB22A90C30A005FA27A /* CoreLocation+Place.swift in Sources */,
 				CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */,
 				CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */,
+				CF0E0CBC2A90CEF4005FA27A /* Reactive+UILabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

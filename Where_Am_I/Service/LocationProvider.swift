@@ -27,7 +27,7 @@ class LocationProvider: LocationProviderType {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        locationManager.pausesLocationUpdatesAutomatically = false
+        locationManager.pausesLocationUpdatesAutomatically = true
         
         locationManager.rx.didUpdateLocation
             .compactMap { $0.first }

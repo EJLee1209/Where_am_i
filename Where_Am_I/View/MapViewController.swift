@@ -54,21 +54,38 @@ final class MapViewController : UIViewController, BaseViewController {
         return sv
     }()
     
+    private let userTrackingButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "scope"), for: .normal)
+        button.backgroundColor = .init(white: 1.0, alpha: 0.7)
+        button.tintColor = .black
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 25
+        return button
+    }()
+    
     //MARK: - ViewModel
     var viewModel: MapViewModel!
     func bindViewModel() {
         
         viewModel.currentLocation
             .take(2)
-            .bind(to: mapView.rx.setRegionFromLocation)
-            .disposed(by: bag)
-        
-        viewModel.currentLocation
-            .bind(to: latLabel.rx.latitude, lonLabel.rx.longitude)
+            .bind(to: mapView.rx.setRegionFromLocation, latLabel.rx.latitude, lonLabel.rx.longitude)
             .disposed(by: bag)
         
         viewModel.address
-            .bind(to: addressLabel.rx.text)
+            .take(2)
+            .bind(to: addressLabel.rx.text, rx.title)
+            .disposed(by: bag)
+        
+        userTrackingButton.rx.tap
+            .map { self.viewModel.currentLocation.value }
+            .bind(to: mapView.rx.setRegionFromLocation, latLabel.rx.latitude, lonLabel.rx.longitude)
+            .disposed(by: bag)
+        
+        userTrackingButton.rx.tap
+            .map { self.viewModel.address.value }
+            .bind(to: addressLabel.rx.text, rx.title)
             .disposed(by: bag)
         
     }
@@ -94,13 +111,20 @@ final class MapViewController : UIViewController, BaseViewController {
         
         view.addSubview(bottomBackgroundView)
         bottomBackgroundView.snp.makeConstraints { make in
-            make.bottom.right.left.equalTo(view.safeAreaLayoutGuide).inset(18)
+            make.bottom.right.left.equalTo(view.safeAreaLayoutGuide).inset(22)
             make.height.equalTo(120)
         }
         
         bottomBackgroundView.addSubview(stack)
         stack.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(18)
+        }
+        
+        view.addSubview(userTrackingButton)
+        userTrackingButton.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.bottom.equalTo(bottomBackgroundView.snp.top).offset(-12)
+            make.right.equalToSuperview().inset(12)
         }
     }
     
@@ -122,22 +146,3 @@ final class MapViewController : UIViewController, BaseViewController {
 
 
 
-extension Reactive where Base: UILabel {
-    
-    var latitude: Binder<CLLocation> {
-        return Binder(self.base) { label, location in
-            let attributedText = NSMutableAttributedString(string: "Latitude(위도) : ", attributes: [.font: UIFont.systemFont(ofSize: 14)])
-            attributedText.append(NSAttributedString(string: "\(location.coordinate.latitude)", attributes: [.font: UIFont.boldSystemFont(ofSize: 18)]))
-            label.attributedText = attributedText
-        }
-    }
-    
-    var longitude: Binder<CLLocation> {
-        return Binder(self.base) { label, location in
-            let attributedText = NSMutableAttributedString(string: "Longitude(경도) : ", attributes: [.font: UIFont.systemFont(ofSize: 14)])
-            attributedText.append(NSAttributedString(string: "\(location.coordinate.longitude)", attributes: [.font: UIFont.boldSystemFont(ofSize: 18)]))
-            label.attributedText = attributedText
-        }
-    }
-    
-}
