@@ -21,7 +21,7 @@ final class MapViewModel: BaseViewModel {
     
     let selectedItem: PublishSubject<MKLocalSearchCompletion> = .init()
     let selectedLocation: PublishRelay<CLLocation> = .init()
-    let selectedAddress: BehaviorRelay<String> = .init(value: "")
+    let selectedAddress: PublishRelay<String> = .init()
     
     override init(locationProvider: LocationProviderType, searchService: SearchServiceType) {
         super.init(locationProvider: locationProvider, searchService: searchService)

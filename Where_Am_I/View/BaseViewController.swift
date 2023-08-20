@@ -12,6 +12,7 @@ protocol BaseViewController {
     
     var viewModel: ViewModelType! { get set }
     func bindViewModel()
+    func configureUI()
 }
 
 extension BaseViewController where Self: UIViewController {
@@ -23,5 +24,4 @@ extension BaseViewController where Self: UIViewController {
         
         bindViewModel()
     }
-    
 }

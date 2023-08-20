@@ -19,4 +19,13 @@ extension Reactive where Base: MKMapView {
         }
     }
     
+    var annotation: Binder<(coord: CLLocationCoordinate2D, address: String)> {
+        return Binder(self.base) { (mapView, location) in
+            let annotation = CustomAnnotation(title: location.address, subtitle: "", coordinate: location.coord)
+            
+            mapView.removeAnnotations(mapView.annotations)
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
 }

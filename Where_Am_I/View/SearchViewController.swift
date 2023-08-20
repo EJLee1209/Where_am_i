@@ -33,6 +33,9 @@ final class SearchViewController: UIViewController {
             .disposed(by: bag)
         
         tableView.rx.modelSelected(MKLocalSearchCompletion.self)
+            .do(onNext: { [weak self] _ in
+                self?.dismiss(animated: true)
+            })
             .flatMap { $0 }
             .bind(to: viewModel.selectedItem)
             .disposed(by: bag)
@@ -58,6 +61,8 @@ final class SearchViewController: UIViewController {
         configureUI()
     }
     
+    //MARK: - Helpers
+    
     private func configureUI() {
         view.backgroundColor = .white
         
@@ -66,8 +71,6 @@ final class SearchViewController: UIViewController {
             make.edges.equalToSuperview()
         }
     }
-    
-    //MARK: - Helpers
     
 }
 

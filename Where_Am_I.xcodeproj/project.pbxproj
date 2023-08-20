@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF04CB2C2A91B83300492C10 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */; };
 		CF0E0C832A90B9F0005FA27A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C822A90B9F0005FA27A /* AppDelegate.swift */; };
 		CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */; };
 		CF0E0C8C2A90B9F0005FA27A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0E0C8B2A90B9F0005FA27A /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		CF0E0C7F2A90B9F0005FA27A /* Where_Am_I.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Where_Am_I.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0E0C822A90B9F0005FA27A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				CF0E0CA22A90BAB6005FA27A /* MapViewController.swift */,
 				CF0E0CAA2A90BDC0005FA27A /* SearchViewController.swift */,
 				CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */,
+				CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				CF0E0CB42A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */,
 				CF0E0CBA2A90C9AA005FA27A /* Reactive+MapView.swift in Sources */,
+				CF04CB2C2A91B83300492C10 /* CustomAnnotation.swift in Sources */,
 				CF0E0CB22A90C30A005FA27A /* CoreLocation+Place.swift in Sources */,
 				CF0E0CC42A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift in Sources */,
 				CF0E0CC02A90F08D005FA27A /* SearchServiceType.swift in Sources */,

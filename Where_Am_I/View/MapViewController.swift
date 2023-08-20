@@ -100,6 +100,11 @@ final class MapViewController : UIViewController, BaseViewController {
         viewModel.selectedAddress
             .bind(to: addressLabel.rx.text, rx.title)
             .disposed(by: bag)
+        
+        Observable.zip(viewModel.selectedLocation, viewModel.selectedAddress)
+            .map { ($0.0.coordinate,$0.1) }
+            .bind(to: mapView.rx.annotation)
+            .disposed(by: bag)
     }
     
     //MARK: - LifeCycle
@@ -113,7 +118,7 @@ final class MapViewController : UIViewController, BaseViewController {
     
     //MARK: - Helpers
     
-    private func configureUI() {
+    func configureUI() {
         view.backgroundColor = .white
         
         view.addSubview(mapView)
@@ -136,7 +141,7 @@ final class MapViewController : UIViewController, BaseViewController {
         userTrackingButton.snp.makeConstraints { make in
             make.size.equalTo(50)
             make.bottom.equalTo(bottomBackgroundView.snp.top).offset(-12)
-            make.right.equalToSuperview().inset(12)
+            make.right.equalTo(bottomBackgroundView)
         }
     }
     
