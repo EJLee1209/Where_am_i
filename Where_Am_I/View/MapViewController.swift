@@ -11,12 +11,11 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-final class MapViewController : UIViewController, BaseViewController {
+final class MapViewController : UIViewController {
     
     //MARK: - Properties
     private let mapView = MKMapView()
     private lazy var searchController = UISearchController(searchResultsController: SearchViewController(viewModel: viewModel))
-    private let bag = DisposeBag()
     
     private let bottomBackgroundView: UIView = {
         let view = UIView()
@@ -45,7 +44,7 @@ final class MapViewController : UIViewController, BaseViewController {
         return label
     }()
     
-    private lazy var stack: UIStackView = {
+    private lazy var locationInfoStack: UIStackView = {
         let sv = UIStackView(arrangedSubviews: [addressLabel, latLabel, lonLabel])
         sv.axis = .vertical
         sv.alignment = .leading
@@ -64,8 +63,50 @@ final class MapViewController : UIViewController, BaseViewController {
         return button
     }()
     
-    //MARK: - ViewModel
+    private let pinButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "mappin.and.ellipse"), for: .normal)
+        button.backgroundColor = .init(white: 1.0, alpha: 0.7)
+        button.tintColor = .black
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 25
+        return button
+    }()
+    
     var viewModel: MapViewModel!
+    
+    private let bag = DisposeBag()
+    
+    //MARK: - LifeCycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureUI()
+        setupMapView()
+        setupNavigationBar()
+    }
+    
+    //MARK: - Helpers
+    
+    private func setupMapView() {
+        mapView.showsUserLocation = true
+    }
+    
+    private func setupNavigationBar() {
+        navigationItem.title = "Where Am I?"
+        navigationItem.searchController = searchController
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white.withAlphaComponent(0.5)
+
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.compactAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+}
+
+//MARK: - BaseViewController
+extension MapViewController: BaseViewController {
+    
     func bindViewModel() {
         
         viewModel.currentLocation
@@ -105,18 +146,15 @@ final class MapViewController : UIViewController, BaseViewController {
             .map { ($0.0.coordinate,$0.1) }
             .bind(to: mapView.rx.annotation)
             .disposed(by: bag)
-    }
-    
-    //MARK: - LifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        configureUI()
-        setupMapView()
-        setupNavigationBar()
+        mapView.rx.regionDidChanged
+            .subscribe(onNext: {
+                print("변경")
+            })
+            .disposed(by: bag)
+        
     }
     
-    //MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .white
@@ -132,8 +170,8 @@ final class MapViewController : UIViewController, BaseViewController {
             make.height.equalTo(120)
         }
         
-        bottomBackgroundView.addSubview(stack)
-        stack.snp.makeConstraints { make in
+        bottomBackgroundView.addSubview(locationInfoStack)
+        locationInfoStack.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(18)
         }
         
@@ -143,23 +181,14 @@ final class MapViewController : UIViewController, BaseViewController {
             make.bottom.equalTo(bottomBackgroundView.snp.top).offset(-12)
             make.right.equalTo(bottomBackgroundView)
         }
-    }
-    
-    private func setupMapView() {
-        mapView.showsUserLocation = true
-    }
-    
-    private func setupNavigationBar() {
-        navigationItem.title = "Where Am I?"
-        navigationItem.searchController = searchController
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .white.withAlphaComponent(0.5)
-
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
+        view.addSubview(pinButton)
+        pinButton.snp.makeConstraints { make in
+            make.size.equalTo(50)
+            make.bottom.equalTo(userTrackingButton.snp.top).offset(-12)
+            make.right.equalTo(bottomBackgroundView)
+        }
     }
 }
-
 
 
