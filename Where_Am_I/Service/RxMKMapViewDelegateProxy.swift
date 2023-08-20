@@ -32,21 +32,35 @@ extension Reactive where Base: MKMapView {
         return RxMKMapViewDelegateProxy.proxy(for: base)
     }
     
-    var regionDidChanged: Observable<Void> {
-        let sel = #selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:))
-        
-        return delegate.methodInvoked(sel)
-            .map { _ in }
-            .asObservable()
+    enum RegionChangeState {
+        case start
+        case end
     }
     
-    var regionWillChange: Observable<Void> {
+    var regionWillChange: Observable<RegionChangeState> {
         let sel = #selector(MKMapViewDelegate.mapView(_:regionWillChangeAnimated:))
         
         return delegate.methodInvoked(sel)
-            .map { _ in }
+            .map { _ in .start }
+            .asObservable()
+    }
+    
+    var regionDidChanged: Observable<RegionChangeState> {
+        let sel = #selector(MKMapViewDelegate.mapView(_:regionDidChangeAnimated:))
+        
+        return delegate.methodInvoked(sel)
+            .map { _ in .end }
+            .asObservable()
+    }
+    
+    
+    var regionIsChanging: Observable<Bool> {        
+        return Observable.merge(regionDidChanged, regionWillChange)
+            .map { $0 == .start }
             .asObservable()
     }
     
 }
+
+
 

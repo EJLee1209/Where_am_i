@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CF04CB2C2A91B83300492C10 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */; };
 		CF04CB2E2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2D2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift */; };
+		CF04CB302A91C4FB00492C10 /* Reactive+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */; };
+		CF04CB322A91D96F00492C10 /* Reactive+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB312A91D96F00492C10 /* Reactive+UIImageView.swift */; };
 		CF0E0C832A90B9F0005FA27A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C822A90B9F0005FA27A /* AppDelegate.swift */; };
 		CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */; };
 		CF0E0C8C2A90B9F0005FA27A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0E0C8B2A90B9F0005FA27A /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 /* Begin PBXFileReference section */
 		CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		CF04CB2D2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMKMapViewDelegateProxy.swift; sourceTree = "<group>"; };
+		CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UIButton.swift"; sourceTree = "<group>"; };
+		CF04CB312A91D96F00492C10 /* Reactive+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UIImageView.swift"; sourceTree = "<group>"; };
 		CF0E0C7F2A90B9F0005FA27A /* Where_Am_I.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Where_Am_I.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0E0C822A90B9F0005FA27A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +79,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF04CB332A91D97F00492C10 /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				CF0E0CB92A90C9AA005FA27A /* Reactive+MapView.swift */,
+				CF0E0CBB2A90CEF4005FA27A /* Reactive+UILabel.swift */,
+				CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */,
+				CF04CB312A91D96F00492C10 /* Reactive+UIImageView.swift */,
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
 		CF0E0C762A90B9F0005FA27A = {
 			isa = PBXGroup;
 			children = (
@@ -161,8 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */,
-				CF0E0CB92A90C9AA005FA27A /* Reactive+MapView.swift */,
-				CF0E0CBB2A90CEF4005FA27A /* Reactive+UILabel.swift */,
+				CF04CB332A91D97F00492C10 /* Reactive */,
 				CF0E0CC12A90F1CA005FA27A /* MKLocalSearchCompletion+.swift */,
 			);
 			path = Extension;
@@ -249,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF04CB322A91D96F00492C10 /* Reactive+UIImageView.swift in Sources */,
 				CF0E0CAB2A90BDC0005FA27A /* SearchViewController.swift in Sources */,
 				CF0E0CBE2A90F06B005FA27A /* MKSearchService.swift in Sources */,
 				CF0E0CB62A90C5D5005FA27A /* BaseViewModel.swift in Sources */,
@@ -267,6 +282,7 @@
 				CF0E0CC02A90F08D005FA27A /* SearchServiceType.swift in Sources */,
 				CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */,
 				CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */,
+				CF04CB302A91C4FB00492C10 /* Reactive+UIButton.swift in Sources */,
 				CF0E0CBC2A90CEF4005FA27A /* Reactive+UILabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

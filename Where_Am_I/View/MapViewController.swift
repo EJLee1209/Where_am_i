@@ -63,7 +63,7 @@ final class MapViewController : UIViewController {
         return button
     }()
     
-    private let pinButton: UIButton = {
+    private var pinButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(systemName: "mappin.and.ellipse"), for: .normal)
         button.backgroundColor = .init(white: 1.0, alpha: 0.7)
@@ -72,6 +72,14 @@ final class MapViewController : UIViewController {
         button.layer.cornerRadius = 25
         return button
     }()
+    
+    private var pinImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        iv.image = UIImage(named: "icon_pin")
+        return iv
+    }()
+    
     
     var viewModel: MapViewModel!
     
@@ -143,18 +151,61 @@ extension MapViewController: BaseViewController {
             .disposed(by: bag)
         
         Observable.zip(viewModel.selectedLocation, viewModel.selectedAddress)
+            .filter({ _ in
+                return !self.viewModel.pinIsActive.value
+            })
             .map { ($0.0.coordinate,$0.1) }
             .bind(to: mapView.rx.annotation)
             .disposed(by: bag)
         
+        pinButton.rx.action = viewModel.makePinButtonAction()
+        
+        viewModel.pinIsActive
+            .bind(to: pinButton.rx.tintColor, pinImageView.rx.isHidden)
+            .disposed(by: bag)
+        
+        mapView.rx.regionIsChanging
+            .skip(2)
+            .bind(to: viewModel.regionIsChanging)
+            .disposed(by: bag)
+        
         mapView.rx.regionDidChanged
-            .subscribe(onNext: {
-                print("변경")
+            .skip(2)
+            .filter({ _ in
+                self.viewModel.pinIsActive.value
+            })
+            .map { _ in
+                let coord = self.mapView.centerCoordinate
+                return CLLocation(latitude: coord.latitude, longitude: coord.longitude)
+            }
+            .bind(to: viewModel.selectedLocation)
+            .disposed(by: bag)
+            
+            
+        
+        viewModel.pinOffSet
+            .skip(1)
+            .subscribe(onNext: { offset in
+                self.remakeConstraints(offset: offset)
             })
             .disposed(by: bag)
         
+        
     }
     
+    func remakeConstraints(offset: Int) {
+        if !viewModel.pinIsActive.value { return }
+        
+        pinImageView.snp.updateConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(mapView).offset(offset)
+            make.size.equalTo(45)
+        }
+        
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.pinImageView.superview?.layoutIfNeeded()
+        }
+    }
     
     func configureUI() {
         view.backgroundColor = .white
@@ -188,7 +239,17 @@ extension MapViewController: BaseViewController {
             make.bottom.equalTo(userTrackingButton.snp.top).offset(-12)
             make.right.equalTo(bottomBackgroundView)
         }
+        
+        view.addSubview(pinImageView)
+        pinImageView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalTo(mapView)
+            make.size.equalTo(45)
+        }
+        
     }
+    
+    
 }
 
 

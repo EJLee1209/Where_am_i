@@ -12,6 +12,7 @@ import CoreLocation
 import RxDataSources
 import UIKit
 import MapKit
+import Action
 
 final class MapViewModel: BaseViewModel {
     
@@ -22,6 +23,10 @@ final class MapViewModel: BaseViewModel {
     let selectedItem: PublishSubject<MKLocalSearchCompletion> = .init()
     let selectedLocation: PublishRelay<CLLocation> = .init()
     let selectedAddress: PublishRelay<String> = .init()
+    
+    let pinIsActive: BehaviorRelay<Bool> = .init(value: false)
+    let regionIsChanging: BehaviorRelay<Bool> = .init(value: false)
+    let pinOffSet: BehaviorRelay<Int> = .init(value: 0)
     
     override init(locationProvider: LocationProviderType, searchService: SearchServiceType) {
         super.init(locationProvider: locationProvider, searchService: searchService)
@@ -58,6 +63,14 @@ final class MapViewModel: BaseViewModel {
             }
             .bind(to: selectedAddress)
             .disposed(by: bag)
+        
+        regionIsChanging
+            .map { value -> Int in
+                value ? -16 : 0
+            }
+            .bind(to: pinOffSet)
+            .disposed(by: bag)
+    
     }
     
     let searchResultDataSource: RxTableViewSectionedAnimatedDataSource<SearchSectionModel> = {
@@ -72,6 +85,20 @@ final class MapViewModel: BaseViewModel {
         
         return ds
     }()
+    
+    //MARK: - Actions
+    
+    func makePinButtonAction() -> CocoaAction {
+        return CocoaAction { [weak self] _ in
+            guard let self = self else {
+                return Observable.empty()
+            }
+            
+            pinIsActive.accept(!pinIsActive.value)
+            
+            return Observable.empty()
+        }
+    }
 }
 
 
