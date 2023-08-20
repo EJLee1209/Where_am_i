@@ -20,11 +20,18 @@ class BaseViewModel: NSObject {
     
     let locationProvider: LocationProviderType
     let searchService: SearchServiceType
+    let placeStorage: PlaceStorageType
     
-    init(title: String, locationProvider: LocationProviderType, searchService: SearchServiceType) {
+    var favoriteList: Observable<[PlaceSectionModel]> {
+        return placeStorage.read()
+    }
+    
+    init(title: String, locationProvider: LocationProviderType, searchService: SearchServiceType, placeStorage: PlaceStorageType) {
         self.title = title
         self.locationProvider = locationProvider
         self.searchService = searchService
+        self.placeStorage = placeStorage
+        
     }
     
     

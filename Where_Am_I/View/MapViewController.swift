@@ -10,6 +10,7 @@ import MapKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import Action
 
 final class MapViewController : UIViewController {
     
@@ -80,6 +81,8 @@ final class MapViewController : UIViewController {
         return iv
     }()
     
+    private var addFavoriteButton = UIBarButtonItem(systemItem: .add)
+    
     
     var viewModel: MapViewModel!
     
@@ -108,6 +111,7 @@ final class MapViewController : UIViewController {
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        navigationItem.setRightBarButton(addFavoriteButton, animated: true)
     }
 }
 
@@ -119,6 +123,7 @@ extension MapViewController: BaseViewController {
         navigationItem.title = viewModel.title
         
         viewModel.currentLocation
+            .compactMap { $0 }
             .take(2)
             .bind(to: mapView.rx.setRegionFromLocation, latLabel.rx.latitude, lonLabel.rx.longitude)
             .disposed(by: bag)
@@ -134,7 +139,10 @@ extension MapViewController: BaseViewController {
             .disposed(by: bag)
         
         userTrackingButton.rx.tap
-            .map { self.viewModel.address.value }
+            .map {
+                self.viewModel.selectedLocation.accept(nil)
+                return self.viewModel.address.value
+            }
             .bind(to: addressLabel.rx.text, navigationItem.rx.title)
             .disposed(by: bag)
         
@@ -144,6 +152,7 @@ extension MapViewController: BaseViewController {
             .disposed(by: bag)
         
         viewModel.selectedLocation
+            .compactMap { $0 }
             .bind(to: mapView.rx.setRegionFromLocation, latLabel.rx.latitude, lonLabel.rx.longitude)
             .disposed(by: bag)
         
@@ -151,7 +160,7 @@ extension MapViewController: BaseViewController {
             .bind(to: addressLabel.rx.text, navigationItem.rx.title)
             .disposed(by: bag)
         
-        Observable.zip(viewModel.selectedLocation, viewModel.selectedAddress)
+        Observable.zip(viewModel.selectedLocation.compactMap { $0 }, viewModel.selectedAddress)
             .filter({ _ in
                 return !self.viewModel.pinIsActive.value
             })
@@ -189,7 +198,7 @@ extension MapViewController: BaseViewController {
             })
             .disposed(by: bag)
         
-        
+        addFavoriteButton.rx.action = viewModel.makeAddFavoriteButtonAction(parentViewController: self)
     }
     
     func remakeConstraints(offset: Int) {
@@ -245,6 +254,8 @@ extension MapViewController: BaseViewController {
             make.centerY.equalTo(mapView).offset(15)
             make.size.equalTo(45)
         }
+        
+        
         
     }
     

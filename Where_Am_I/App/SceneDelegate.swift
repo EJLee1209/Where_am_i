@@ -19,15 +19,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let locationProvider = LocationProvider()
         let searchService = MKSearchService()
+        let memoryStorage = MemoryStorage()
         
-        let mapViewModel = MapViewModel(title: "Where Am I?",locationProvider: locationProvider, searchService: searchService)
+        let mapViewModel = MapViewModel(
+            title: "Where Am I?",
+            locationProvider: locationProvider,
+            searchService: searchService,
+            placeStorage: memoryStorage
+        )
         
         var mapViewController = MapViewController()
         mapViewController.bind(viewModel: mapViewModel)
         let mapNav = UINavigationController(rootViewController: mapViewController)
         
-        let starsViewController = StarsViewController()
+        let starsViewModel = FavoriteViewModel(
+            title: "Favorites",
+            locationProvider: locationProvider,
+            searchService: searchService,
+            placeStorage: memoryStorage
+        )
+        
+        var starsViewController = FavoriteViewController()
+        starsViewController.bind(viewModel: starsViewModel)
         let starsNav = UINavigationController(rootViewController: starsViewController)
+        starsNav.navigationBar.prefersLargeTitles = true
         
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers([mapNav, starsNav], animated: true)
@@ -43,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             items[1].selectedImage = UIImage(systemName: "star.fill")
             items[1].image = UIImage(systemName: "star")
-            items[1].title = "Stars"
+            items[1].title = "Favorites"
             
         }
         

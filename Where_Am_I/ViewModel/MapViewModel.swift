@@ -21,15 +21,15 @@ final class MapViewModel: BaseViewModel {
     let searchResult: BehaviorRelay<[SearchSectionModel]> = .init(value: [])
     
     let selectedItem: PublishSubject<MKLocalSearchCompletion> = .init()
-    let selectedLocation: PublishRelay<CLLocation> = .init()
+    let selectedLocation: BehaviorRelay<CLLocation?> = .init(value: nil)
     let selectedAddress: PublishRelay<String> = .init()
     
     let pinIsActive: BehaviorRelay<Bool> = .init(value: false)
     let regionIsChanging: BehaviorRelay<Bool> = .init(value: false)
     let pinOffSet: BehaviorRelay<Int> = .init(value: 0)
     
-    override init(title: String, locationProvider: LocationProviderType, searchService: SearchServiceType) {
-        super.init(title: title, locationProvider: locationProvider, searchService: searchService)
+    override init(title: String, locationProvider: LocationProviderType, searchService: SearchServiceType, placeStorage: PlaceStorageType) {
+        super.init(title: title, locationProvider: locationProvider, searchService: searchService, placeStorage: placeStorage)
         
         locationProvider.currentAddress()
             .bind(to: address)
@@ -57,6 +57,7 @@ final class MapViewModel: BaseViewModel {
             .disposed(by: bag)
         
         selectedLocation
+            .compactMap { $0 }
             .withUnretained(self)
             .flatMap { viewModel, location in
                 viewModel.locationProvider.reverseGeoCodeLocatoin(location: location)
@@ -97,6 +98,33 @@ final class MapViewModel: BaseViewModel {
             pinIsActive.accept(!pinIsActive.value)
             
             return Observable.empty()
+        }
+    }
+    
+    func makeAddFavoriteButtonAction(parentViewController: UIViewController) -> CocoaAction {
+        return CocoaAction { [weak self] _ in
+            guard let self = self else { return Observable.empty() }
+            
+            let alert = UIAlertController(title: "Add Favorite", message: "Add to Favorites?", preferredStyle: .alert)
+            alert.addTextField { textField in
+                textField.placeholder = "Enter place name"
+            }
+            let okAction = UIAlertAction(title: "Save", style: .destructive) { action in
+                if let coord = self.selectedLocation.value?.coordinate {
+                    self.placeStorage.create(name: alert.textFields?.first!.text ?? "unknown", lat: coord.latitude, lon: coord.longitude)
+                } else {
+                    let coord = self.currentLocation.value.coordinate
+                    
+                    self.placeStorage.create(name: alert.textFields?.first!.text ?? "unknown", lat: coord.latitude, lon: coord.longitude)
+                }
+                
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            
+            return Observable.just(alert)
+                .map { parentViewController.present($0, animated: true) }
         }
     }
 }
