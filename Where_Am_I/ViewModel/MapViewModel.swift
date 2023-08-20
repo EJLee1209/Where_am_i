@@ -66,7 +66,7 @@ final class MapViewModel: BaseViewModel {
         
         regionIsChanging
             .map { value -> Int in
-                value ? -16 : 0
+                value ? -5 : 15
             }
             .bind(to: pinOffSet)
             .disposed(by: bag)

@@ -17,17 +17,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        var startVC = MapViewController()
-        
         let locationProvider = LocationProvider()
         let searchService = MKSearchService()
         
         let mapViewModel = MapViewModel(locationProvider: locationProvider, searchService: searchService)
         
-        startVC.bind(viewModel: mapViewModel)
-        let nav = UINavigationController(rootViewController: startVC)
+        var mapViewController = MapViewController()
+        mapViewController.bind(viewModel: mapViewModel)
+        let mapNav = UINavigationController(rootViewController: mapViewController)
         
-        window?.rootViewController = nav
+        let starsViewController = StarsViewController()
+        let starsNav = UINavigationController(rootViewController: starsViewController)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([mapNav, starsNav], animated: true)
+        
+        tabBarController.tabBar.backgroundColor = .white.withAlphaComponent(0.9)
+        
+        
+        if let items = tabBarController.tabBar.items {
+            
+            items[0].selectedImage = UIImage(systemName: "map.fill")
+            items[0].image = UIImage(systemName: "map")
+            items[0].title = "Map"
+            
+            items[1].selectedImage = UIImage(systemName: "star.fill")
+            items[1].image = UIImage(systemName: "star")
+            items[1].title = "Stars"
+            
+        }
+        
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 

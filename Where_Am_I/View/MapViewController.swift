@@ -124,7 +124,7 @@ extension MapViewController: BaseViewController {
         
         viewModel.address
             .take(2)
-            .bind(to: addressLabel.rx.text, rx.title)
+            .bind(to: addressLabel.rx.text, navigationItem.rx.title)
             .disposed(by: bag)
         
         userTrackingButton.rx.tap
@@ -134,7 +134,7 @@ extension MapViewController: BaseViewController {
         
         userTrackingButton.rx.tap
             .map { self.viewModel.address.value }
-            .bind(to: addressLabel.rx.text, rx.title)
+            .bind(to: addressLabel.rx.text, navigationItem.rx.title)
             .disposed(by: bag)
         
         searchController.searchBar.rx.text
@@ -147,7 +147,7 @@ extension MapViewController: BaseViewController {
             .disposed(by: bag)
         
         viewModel.selectedAddress
-            .bind(to: addressLabel.rx.text, rx.title)
+            .bind(to: addressLabel.rx.text, navigationItem.rx.title)
             .disposed(by: bag)
         
         Observable.zip(viewModel.selectedLocation, viewModel.selectedAddress)
@@ -180,8 +180,6 @@ extension MapViewController: BaseViewController {
             }
             .bind(to: viewModel.selectedLocation)
             .disposed(by: bag)
-            
-            
         
         viewModel.pinOffSet
             .skip(1)
@@ -201,7 +199,7 @@ extension MapViewController: BaseViewController {
             make.centerY.equalTo(mapView).offset(offset)
             make.size.equalTo(45)
         }
-        
+
         UIView.animate(withDuration: 0.3) { [weak self] in
             self?.pinImageView.superview?.layoutIfNeeded()
         }
@@ -243,7 +241,7 @@ extension MapViewController: BaseViewController {
         view.addSubview(pinImageView)
         pinImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.centerY.equalTo(mapView)
+            make.centerY.equalTo(mapView).offset(15)
             make.size.equalTo(45)
         }
         

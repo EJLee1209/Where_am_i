@@ -58,6 +58,7 @@ class LocationProvider: LocationProviderType {
                     
                     if let gu = place.locality, let dong = place.subLocality {
                         observer.onNext("\(gu) \(dong)")
+                        
                     } else {
                         observer.onNext(place.name ?? "알 수 없음")
                     }

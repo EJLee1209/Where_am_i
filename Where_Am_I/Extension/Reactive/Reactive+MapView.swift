@@ -14,7 +14,8 @@ extension Reactive where Base: MKMapView {
     
     var setRegionFromLocation: Binder<CLLocation> {
         return Binder(self.base) { mapView, location in
-            let region = MKCoordinateRegion(center: location.coordinate, span: .init(latitudeDelta: 0.03, longitudeDelta: 0.03))
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+            
             mapView.setRegion(region, animated: true)
         }
     }
