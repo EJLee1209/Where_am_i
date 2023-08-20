@@ -101,7 +101,6 @@ final class MapViewController : UIViewController {
     }
     
     private func setupNavigationBar() {
-        navigationItem.title = "Where Am I?"
         navigationItem.searchController = searchController
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = .white.withAlphaComponent(0.5)
@@ -116,6 +115,8 @@ final class MapViewController : UIViewController {
 extension MapViewController: BaseViewController {
     
     func bindViewModel() {
+        
+        navigationItem.title = viewModel.title
         
         viewModel.currentLocation
             .take(2)

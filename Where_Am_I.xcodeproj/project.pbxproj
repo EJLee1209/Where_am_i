@@ -12,6 +12,10 @@
 		CF04CB302A91C4FB00492C10 /* Reactive+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */; };
 		CF04CB322A91D96F00492C10 /* Reactive+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB312A91D96F00492C10 /* Reactive+UIImageView.swift */; };
 		CF04CB352A92182800492C10 /* StarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB342A92182800492C10 /* StarsViewController.swift */; };
+		CF04CB382A921BDE00492C10 /* StarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB372A921BDE00492C10 /* StarsViewModel.swift */; };
+		CF04CB3A2A921C4B00492C10 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB392A921C4B00492C10 /* Place.swift */; };
+		CF04CB402A921D8500492C10 /* PlaceStorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB3F2A921D8500492C10 /* PlaceStorageType.swift */; };
+		CF04CB422A921E5100492C10 /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB412A921E5100492C10 /* MemoryStorage.swift */; };
 		CF0E0C832A90B9F0005FA27A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C822A90B9F0005FA27A /* AppDelegate.swift */; };
 		CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */; };
 		CF0E0C8C2A90B9F0005FA27A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0E0C8B2A90B9F0005FA27A /* Assets.xcassets */; };
@@ -43,6 +47,10 @@
 		CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UIButton.swift"; sourceTree = "<group>"; };
 		CF04CB312A91D96F00492C10 /* Reactive+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UIImageView.swift"; sourceTree = "<group>"; };
 		CF04CB342A92182800492C10 /* StarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsViewController.swift; sourceTree = "<group>"; };
+		CF04CB372A921BDE00492C10 /* StarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsViewModel.swift; sourceTree = "<group>"; };
+		CF04CB392A921C4B00492C10 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		CF04CB3F2A921D8500492C10 /* PlaceStorageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceStorageType.swift; sourceTree = "<group>"; };
+		CF04CB412A921E5100492C10 /* MemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
 		CF0E0C7F2A90B9F0005FA27A /* Where_Am_I.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Where_Am_I.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF0E0C822A90B9F0005FA27A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +108,43 @@
 			path = Custom;
 			sourceTree = "<group>";
 		};
+		CF04CB3B2A921D4700492C10 /* DelegateProxy */ = {
+			isa = PBXGroup;
+			children = (
+				CF0E0CB32A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift */,
+				CF0E0CC32A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift */,
+				CF04CB2D2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift */,
+			);
+			path = DelegateProxy;
+			sourceTree = "<group>";
+		};
+		CF04CB3C2A921D5600492C10 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				CF0E0CAC2A90C165005FA27A /* LocationProviderType.swift */,
+				CF0E0CAE2A90C28C005FA27A /* LocationProvider.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		CF04CB3D2A921D6500492C10 /* MKSearch */ = {
+			isa = PBXGroup;
+			children = (
+				CF0E0CBD2A90F06B005FA27A /* MKSearchService.swift */,
+				CF0E0CBF2A90F08D005FA27A /* SearchServiceType.swift */,
+			);
+			path = MKSearch;
+			sourceTree = "<group>";
+		};
+		CF04CB3E2A921D7900492C10 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CF04CB3F2A921D8500492C10 /* PlaceStorageType.swift */,
+				CF04CB412A921E5100492C10 /* MemoryStorage.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		CF0E0C762A90B9F0005FA27A = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +182,7 @@
 			children = (
 				CF0E0CA52A90BAEF005FA27A /* MapViewModel.swift */,
 				CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */,
+				CF04CB372A921BDE00492C10 /* StarsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -156,6 +202,7 @@
 		CF0E0CA02A90BAA9005FA27A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CF04CB392A921C4B00492C10 /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,13 +210,10 @@
 		CF0E0CA12A90BAAC005FA27A /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				CF0E0CAC2A90C165005FA27A /* LocationProviderType.swift */,
-				CF0E0CAE2A90C28C005FA27A /* LocationProvider.swift */,
-				CF0E0CB32A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift */,
-				CF0E0CBD2A90F06B005FA27A /* MKSearchService.swift */,
-				CF0E0CBF2A90F08D005FA27A /* SearchServiceType.swift */,
-				CF0E0CC32A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift */,
-				CF04CB2D2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift */,
+				CF04CB3E2A921D7900492C10 /* CoreData */,
+				CF04CB3C2A921D5600492C10 /* Location */,
+				CF04CB3D2A921D6500492C10 /* MKSearch */,
+				CF04CB3B2A921D4700492C10 /* DelegateProxy */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -186,8 +230,8 @@
 		CF0E0CB02A90C2F5005FA27A /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */,
 				CF04CB332A91D97F00492C10 /* Reactive */,
+				CF0E0CB12A90C30A005FA27A /* CoreLocation+Place.swift */,
 				CF0E0CC12A90F1CA005FA27A /* MKLocalSearchCompletion+.swift */,
 			);
 			path = Extension;
@@ -277,10 +321,12 @@
 				CF04CB322A91D96F00492C10 /* Reactive+UIImageView.swift in Sources */,
 				CF0E0CAB2A90BDC0005FA27A /* SearchViewController.swift in Sources */,
 				CF0E0CBE2A90F06B005FA27A /* MKSearchService.swift in Sources */,
+				CF04CB3A2A921C4B00492C10 /* Place.swift in Sources */,
 				CF0E0CB62A90C5D5005FA27A /* BaseViewModel.swift in Sources */,
 				CF0E0CB82A90C6BD005FA27A /* BaseViewController.swift in Sources */,
 				CF0E0C832A90B9F0005FA27A /* AppDelegate.swift in Sources */,
 				CF0E0CA32A90BAB6005FA27A /* MapViewController.swift in Sources */,
+				CF04CB402A921D8500492C10 /* PlaceStorageType.swift in Sources */,
 				CF0E0CAD2A90C165005FA27A /* LocationProviderType.swift in Sources */,
 				CF04CB2E2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift in Sources */,
 				CF0E0CC22A90F1CA005FA27A /* MKLocalSearchCompletion+.swift in Sources */,
@@ -288,9 +334,11 @@
 				CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */,
 				CF0E0CBA2A90C9AA005FA27A /* Reactive+MapView.swift in Sources */,
 				CF04CB2C2A91B83300492C10 /* CustomAnnotation.swift in Sources */,
+				CF04CB422A921E5100492C10 /* MemoryStorage.swift in Sources */,
 				CF0E0CB22A90C30A005FA27A /* CoreLocation+Place.swift in Sources */,
 				CF0E0CC42A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift in Sources */,
 				CF04CB352A92182800492C10 /* StarsViewController.swift in Sources */,
+				CF04CB382A921BDE00492C10 /* StarsViewModel.swift in Sources */,
 				CF0E0CC02A90F08D005FA27A /* SearchServiceType.swift in Sources */,
 				CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */,
 				CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */,

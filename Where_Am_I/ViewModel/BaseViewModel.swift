@@ -13,6 +13,7 @@ import RxCocoa
 
 class BaseViewModel: NSObject {
     
+    let title: String
     let bag = DisposeBag()
     let address = BehaviorRelay<String>(value: "")
     let currentLocation = BehaviorRelay<CLLocation>(value: CLLocation.gangnamStation)
@@ -20,7 +21,8 @@ class BaseViewModel: NSObject {
     let locationProvider: LocationProviderType
     let searchService: SearchServiceType
     
-    init(locationProvider: LocationProviderType, searchService: SearchServiceType) {
+    init(title: String, locationProvider: LocationProviderType, searchService: SearchServiceType) {
+        self.title = title
         self.locationProvider = locationProvider
         self.searchService = searchService
     }

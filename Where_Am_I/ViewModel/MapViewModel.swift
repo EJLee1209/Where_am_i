@@ -28,8 +28,8 @@ final class MapViewModel: BaseViewModel {
     let regionIsChanging: BehaviorRelay<Bool> = .init(value: false)
     let pinOffSet: BehaviorRelay<Int> = .init(value: 0)
     
-    override init(locationProvider: LocationProviderType, searchService: SearchServiceType) {
-        super.init(locationProvider: locationProvider, searchService: searchService)
+    override init(title: String, locationProvider: LocationProviderType, searchService: SearchServiceType) {
+        super.init(title: title, locationProvider: locationProvider, searchService: searchService)
         
         locationProvider.currentAddress()
             .bind(to: address)

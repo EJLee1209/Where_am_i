@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let locationProvider = LocationProvider()
         let searchService = MKSearchService()
         
-        let mapViewModel = MapViewModel(locationProvider: locationProvider, searchService: searchService)
+        let mapViewModel = MapViewModel(title: "Where Am I?",locationProvider: locationProvider, searchService: searchService)
         
         var mapViewController = MapViewController()
         mapViewController.bind(viewModel: mapViewModel)
