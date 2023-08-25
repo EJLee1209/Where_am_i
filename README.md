@@ -1,8 +1,8 @@
 ## Where Am I?
 
-<img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/20e37d53-acb1-4410-863f-8eb3e05b4f00" width=180/> | <img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/7e80e1b5-59ee-4527-b40a-03dfdf2500fd" width=180/>
+<img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/20e37d53-acb1-4410-863f-8eb3e05b4f00"/> | <img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/7e80e1b5-59ee-4527-b40a-03dfdf2500fd"/>
 ---|---|
-<img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/350d72d9-10fa-4468-a3a3-96ac100ba88c" width=180/> | <img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/2ed3b8f4-087d-4d19-8f6e-a556e9b9fd39" width=180/>
+<img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/350d72d9-10fa-4468-a3a3-96ac100ba88c"/> | <img src="https://github.com/EJLee1209/Where_am_i/assets/101651909/2ed3b8f4-087d-4d19-8f6e-a556e9b9fd39"/>
 
 위/경도 데이터가 필요할 때, 사용하기 위해서 만든 토이 프로젝트입니다. <br>
 
