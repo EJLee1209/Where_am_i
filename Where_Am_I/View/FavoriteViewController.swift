@@ -43,6 +43,21 @@ extension FavoriteViewController: BaseViewController {
         tableView.rx.modelDeleted(Place.self)
             .bind(to: viewModel.favoriteDeleteAction.inputs)
             .disposed(by: bag)
+        
+            
+        Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(Place.self))
+            .subscribe(onNext: { [weak self] (indexPath, place) in
+                guard let self = self else { return }
+                
+                self.tableView.deselectRow(at: indexPath, animated: true)
+                var detailVC = FavoriteDetailViewController()
+                
+                let detailViewModel = DetailViewModel(place: place)
+                detailVC.bind(viewModel: detailViewModel)
+                
+                self.navigationController?.pushViewController(detailVC, animated: true)
+            })
+            .disposed(by: bag)
     }
     
     func configureUI() {

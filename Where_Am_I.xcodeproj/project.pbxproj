@@ -41,6 +41,8 @@
 		CF0E0CC02A90F08D005FA27A /* SearchServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CBF2A90F08D005FA27A /* SearchServiceType.swift */; };
 		CF0E0CC22A90F1CA005FA27A /* MKLocalSearchCompletion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CC12A90F1CA005FA27A /* MKLocalSearchCompletion+.swift */; };
 		CF0E0CC42A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CC32A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift */; };
+		CF64D8652A9876BA000FB186 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64D8642A9876BA000FB186 /* DetailViewModel.swift */; };
+		CFF140122A9722B200AAEA1D /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF140112A9722B200AAEA1D /* FavoriteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +78,8 @@
 		CF0E0CBF2A90F08D005FA27A /* SearchServiceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceType.swift; sourceTree = "<group>"; };
 		CF0E0CC12A90F1CA005FA27A /* MKLocalSearchCompletion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKLocalSearchCompletion+.swift"; sourceTree = "<group>"; };
 		CF0E0CC32A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMKLocalSearchCompleterDelegateProxy.swift; sourceTree = "<group>"; };
+		CF64D8642A9876BA000FB186 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		CFF140112A9722B200AAEA1D /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +192,7 @@
 				CF0E0CB52A90C5D5005FA27A /* BaseViewModel.swift */,
 				CF04CB372A921BDE00492C10 /* FavoriteViewModel.swift */,
 				CF04CB452A92248600492C10 /* FavoriteCellViewModel.swift */,
+				CF64D8642A9876BA000FB186 /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				CF04CB342A92182800492C10 /* FavoriteViewController.swift */,
 				CF0E0CB72A90C6BD005FA27A /* BaseViewController.swift */,
 				CF04CB432A92234000492C10 /* FavoriteCell.swift */,
+				CFF140112A9722B200AAEA1D /* FavoriteDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 				CF04CB462A92248600492C10 /* FavoriteCellViewModel.swift in Sources */,
 				CF04CB2E2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift in Sources */,
 				CF0E0CC22A90F1CA005FA27A /* MKLocalSearchCompletion+.swift in Sources */,
+				CF64D8652A9876BA000FB186 /* DetailViewModel.swift in Sources */,
 				CF0E0CB42A90C3CE005FA27A /* RxCLLocationManagerDelegateProxy.swift in Sources */,
 				CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */,
 				CF0E0CBA2A90C9AA005FA27A /* Reactive+MapView.swift in Sources */,
@@ -347,6 +354,7 @@
 				CF0E0CC42A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift in Sources */,
 				CF04CB352A92182800492C10 /* FavoriteViewController.swift in Sources */,
 				CF04CB382A921BDE00492C10 /* FavoriteViewModel.swift in Sources */,
+				CFF140122A9722B200AAEA1D /* FavoriteDetailViewController.swift in Sources */,
 				CF0E0CC02A90F08D005FA27A /* SearchServiceType.swift in Sources */,
 				CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */,
 				CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */,
