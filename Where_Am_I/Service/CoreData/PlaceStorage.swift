@@ -75,6 +75,4 @@ final class PlaceStorage: PlaceStorageType {
     }
 
 
-
-
 }

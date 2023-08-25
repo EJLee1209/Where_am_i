@@ -19,13 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let locationProvider = LocationProvider()
         let searchService = MKSearchService()
-        let memoryStorage = MemoryStorage()
+//        let memoryStorage = MemoryStorage()
+        let storage = PlaceStorage(modelName: "PlaceDataModel")
         
         let mapViewModel = MapViewModel(
             title: "Where Am I?",
             locationProvider: locationProvider,
             searchService: searchService,
-            placeStorage: memoryStorage
+            placeStorage: storage
         )
         
         var mapViewController = MapViewController()
@@ -36,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             title: "Favorites",
             locationProvider: locationProvider,
             searchService: searchService,
-            placeStorage: memoryStorage
+            placeStorage: storage
         )
         
         var starsViewController = FavoriteViewController()
