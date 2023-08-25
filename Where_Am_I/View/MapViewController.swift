@@ -45,12 +45,41 @@ final class MapViewController : UIViewController {
         return label
     }()
     
-    private lazy var locationInfoStack: UIStackView = {
-        let sv = UIStackView(arrangedSubviews: [addressLabel, latLabel, lonLabel])
-        sv.axis = .vertical
-        sv.alignment = .leading
+    private var latitudeCopyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
+        return button
+    }()
+    
+    private var longitudeCopyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
+        return button
+    }()
+    
+    private lazy var latitudeStack: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [latLabel, latitudeCopyButton])
+        sv.axis = .horizontal
+        sv.spacing = 10
         sv.distribution = .fill
-        sv.spacing = 8
+        sv.alignment = .fill
+        return sv
+    }()
+    
+    private lazy var longitudeStack: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [lonLabel, longitudeCopyButton])
+        sv.axis = .horizontal
+        sv.spacing = 10
+        sv.distribution = .fill
+        sv.alignment = .fill
+        return sv
+    }()
+    
+    private lazy var locationInfoStack: UIStackView = {
+        let sv = UIStackView(arrangedSubviews: [addressLabel, latitudeStack, longitudeStack])
+        sv.axis = .vertical
+        sv.alignment = .fill
+        sv.distribution = .fill
         return sv
     }()
     
@@ -82,7 +111,6 @@ final class MapViewController : UIViewController {
     }()
     
     private var addFavoriteButton = UIBarButtonItem(systemItem: .add)
-    
     
     var viewModel: MapViewModel!
     
@@ -181,11 +209,13 @@ extension MapViewController: BaseViewController {
         
         mapView.rx.regionDidChanged
             .skip(2)
-            .filter({ _ in
-                self.viewModel.pinIsActive.value
+            .withUnretained(self)
+            .filter({ vc,_ in
+                vc.viewModel.pinIsActive.value
             })
-            .map { _ in
-                let coord = self.mapView.centerCoordinate
+            .withUnretained(self)
+            .map { vc,_ in
+                let coord = vc.mapView.centerCoordinate
                 return CLLocation(latitude: coord.latitude, longitude: coord.longitude)
             }
             .bind(to: viewModel.selectedLocation)
@@ -193,12 +223,31 @@ extension MapViewController: BaseViewController {
         
         viewModel.pinOffSet
             .skip(1)
-            .subscribe(onNext: { offset in
-                self.remakeConstraints(offset: offset)
+            .withUnretained(self)
+            .subscribe(onNext: { vc, offset in
+                vc.remakeConstraints(offset: offset)
             })
             .disposed(by: bag)
         
         addFavoriteButton.rx.action = viewModel.makeAddFavoriteButtonAction(parentViewController: self)
+        
+        latitudeCopyButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc,_ in
+                guard let text = vc.latLabel.text else { return }
+                guard let latitude = text.split(separator: ":").last?.trimmingCharacters(in: .whitespaces) else { return }
+                UIPasteboard.general.string = latitude
+            })
+            .disposed(by: bag)
+        
+        longitudeCopyButton.rx.tap
+            .withUnretained(self)
+            .subscribe(onNext: { vc,_ in
+                guard let text = vc.lonLabel.text else { return }
+                guard let longitude = text.split(separator: ":").last?.trimmingCharacters(in: .whitespaces) else { return }
+                UIPasteboard.general.string = longitude
+            })
+            .disposed(by: bag)
     }
     
     func remakeConstraints(offset: Int) {
@@ -226,12 +275,19 @@ extension MapViewController: BaseViewController {
         view.addSubview(bottomBackgroundView)
         bottomBackgroundView.snp.makeConstraints { make in
             make.bottom.right.left.equalTo(view.safeAreaLayoutGuide).inset(22)
-            make.height.equalTo(120)
+            make.height.equalTo(130)
         }
         
         bottomBackgroundView.addSubview(locationInfoStack)
         locationInfoStack.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(18)
+        }
+        
+        latitudeCopyButton.snp.makeConstraints { make in
+            make.size.equalTo(36)
+        }
+        longitudeCopyButton.snp.makeConstraints { make in
+            make.size.equalTo(36)
         }
         
         view.addSubview(userTrackingButton)

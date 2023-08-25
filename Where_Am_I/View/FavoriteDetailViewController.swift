@@ -54,7 +54,7 @@ extension FavoriteDetailViewController: BaseViewController {
             .disposed(by: bag)
         
         viewModel.annotationInfo
-            .map { ($0.0, $0.1) }
+            .map { $0 }
             .bind(to: mapView.rx.annotation)
             .disposed(by: bag)
             
