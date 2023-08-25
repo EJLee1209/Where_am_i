@@ -237,6 +237,8 @@ extension MapViewController: BaseViewController {
                 guard let text = vc.latLabel.text else { return }
                 guard let latitude = text.split(separator: ":").last?.trimmingCharacters(in: .whitespaces) else { return }
                 UIPasteboard.general.string = latitude
+                
+                vc.showToast(message: "copy to clip board", font: .boldSystemFont(ofSize: 14))
             })
             .disposed(by: bag)
         
@@ -246,6 +248,8 @@ extension MapViewController: BaseViewController {
                 guard let text = vc.lonLabel.text else { return }
                 guard let longitude = text.split(separator: ":").last?.trimmingCharacters(in: .whitespaces) else { return }
                 UIPasteboard.general.string = longitude
+                
+                vc.showToast(message: "copy to clip board", font: .boldSystemFont(ofSize: 14))
             })
             .disposed(by: bag)
     }
