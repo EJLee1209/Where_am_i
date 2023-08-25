@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1573CA28EC4601FDF0AB91F5 /* Pods_Where_Am_I.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80614E6CC4AB3A49AC1890EC /* Pods_Where_Am_I.framework */; };
 		CF04CB2C2A91B83300492C10 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */; };
 		CF04CB2E2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2D2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift */; };
 		CF04CB302A91C4FB00492C10 /* Reactive+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */; };
@@ -22,12 +23,8 @@
 		CF0E0C852A90B9F0005FA27A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0C842A90B9F0005FA27A /* SceneDelegate.swift */; };
 		CF0E0C8C2A90B9F0005FA27A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF0E0C8B2A90B9F0005FA27A /* Assets.xcassets */; };
 		CF0E0C8F2A90B9F0005FA27A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF0E0C8D2A90B9F0005FA27A /* LaunchScreen.storyboard */; };
-		CF0E0C982A90BA2A005FA27A /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E0C972A90BA2A005FA27A /* Differentiator */; };
-		CF0E0C9A2A90BA2A005FA27A /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E0C992A90BA2A005FA27A /* RxDataSources */; };
-		CF0E0C9D2A90BA35005FA27A /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E0C9C2A90BA35005FA27A /* Action */; };
 		CF0E0CA32A90BAB6005FA27A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CA22A90BAB6005FA27A /* MapViewController.swift */; };
 		CF0E0CA62A90BAEF005FA27A /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CA52A90BAEF005FA27A /* MapViewModel.swift */; };
-		CF0E0CA92A90BC6E005FA27A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF0E0CA82A90BC6E005FA27A /* SnapKit */; };
 		CF0E0CAB2A90BDC0005FA27A /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CAA2A90BDC0005FA27A /* SearchViewController.swift */; };
 		CF0E0CAD2A90C165005FA27A /* LocationProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CAC2A90C165005FA27A /* LocationProviderType.swift */; };
 		CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CAE2A90C28C005FA27A /* LocationProvider.swift */; };
@@ -42,10 +39,15 @@
 		CF0E0CC22A90F1CA005FA27A /* MKLocalSearchCompletion+.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CC12A90F1CA005FA27A /* MKLocalSearchCompletion+.swift */; };
 		CF0E0CC42A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0E0CC32A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift */; };
 		CF64D8652A9876BA000FB186 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64D8642A9876BA000FB186 /* DetailViewModel.swift */; };
+		CF64D8672A98949D000FB186 /* PlaceStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64D8662A98949D000FB186 /* PlaceStorage.swift */; };
+		CF64D86A2A98954B000FB186 /* PlaceDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF64D8682A98954B000FB186 /* PlaceDataModel.xcdatamodeld */; };
 		CFF140122A9722B200AAEA1D /* FavoriteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF140112A9722B200AAEA1D /* FavoriteDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C32548B6D6EB506C5022232 /* Pods-Where_Am_I.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Where_Am_I.debug.xcconfig"; path = "Target Support Files/Pods-Where_Am_I/Pods-Where_Am_I.debug.xcconfig"; sourceTree = "<group>"; };
+		43E6B9D1E5708EC2D82028F9 /* Pods-Where_Am_I.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Where_Am_I.release.xcconfig"; path = "Target Support Files/Pods-Where_Am_I/Pods-Where_Am_I.release.xcconfig"; sourceTree = "<group>"; };
+		80614E6CC4AB3A49AC1890EC /* Pods_Where_Am_I.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Where_Am_I.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF04CB2B2A91B83300492C10 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		CF04CB2D2A91C05800492C10 /* RxMKMapViewDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMKMapViewDelegateProxy.swift; sourceTree = "<group>"; };
 		CF04CB2F2A91C4FB00492C10 /* Reactive+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+UIButton.swift"; sourceTree = "<group>"; };
@@ -79,6 +81,8 @@
 		CF0E0CC12A90F1CA005FA27A /* MKLocalSearchCompletion+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKLocalSearchCompletion+.swift"; sourceTree = "<group>"; };
 		CF0E0CC32A90F283005FA27A /* RxMKLocalSearchCompleterDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxMKLocalSearchCompleterDelegateProxy.swift; sourceTree = "<group>"; };
 		CF64D8642A9876BA000FB186 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		CF64D8662A98949D000FB186 /* PlaceStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceStorage.swift; sourceTree = "<group>"; };
+		CF64D8692A98954B000FB186 /* PlaceDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PlaceDataModel.xcdatamodel; sourceTree = "<group>"; };
 		CFF140112A9722B200AAEA1D /* FavoriteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,16 +91,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF0E0C982A90BA2A005FA27A /* Differentiator in Frameworks */,
-				CF0E0CA92A90BC6E005FA27A /* SnapKit in Frameworks */,
-				CF0E0C9A2A90BA2A005FA27A /* RxDataSources in Frameworks */,
-				CF0E0C9D2A90BA35005FA27A /* Action in Frameworks */,
+				1573CA28EC4601FDF0AB91F5 /* Pods_Where_Am_I.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BD8FDF97C1D7F6B7B011AD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80614E6CC4AB3A49AC1890EC /* Pods_Where_Am_I.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81760A46169964B1542C830F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1C32548B6D6EB506C5022232 /* Pods-Where_Am_I.debug.xcconfig */,
+				43E6B9D1E5708EC2D82028F9 /* Pods-Where_Am_I.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CF04CB332A91D97F00492C10 /* Reactive */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,8 +166,10 @@
 		CF04CB3E2A921D7900492C10 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				CF64D8682A98954B000FB186 /* PlaceDataModel.xcdatamodeld */,
 				CF04CB3F2A921D8500492C10 /* PlaceStorageType.swift */,
 				CF04CB412A921E5100492C10 /* MemoryStorage.swift */,
+				CF64D8662A98949D000FB186 /* PlaceStorage.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -158,6 +179,8 @@
 			children = (
 				CF0E0C812A90B9F0005FA27A /* Where_Am_I */,
 				CF0E0C802A90B9F0005FA27A /* Products */,
+				81760A46169964B1542C830F /* Pods */,
+				7BD8FDF97C1D7F6B7B011AD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,21 +279,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CF0E0C932A90B9F0005FA27A /* Build configuration list for PBXNativeTarget "Where_Am_I" */;
 			buildPhases = (
+				38FF1E87646BDAE754B459B7 /* [CP] Check Pods Manifest.lock */,
 				CF0E0C7B2A90B9F0005FA27A /* Sources */,
 				CF0E0C7C2A90B9F0005FA27A /* Frameworks */,
 				CF0E0C7D2A90B9F0005FA27A /* Resources */,
+				A851C9F2808B4DF7DCE33CCF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Where_Am_I;
-			packageProductDependencies = (
-				CF0E0C972A90BA2A005FA27A /* Differentiator */,
-				CF0E0C992A90BA2A005FA27A /* RxDataSources */,
-				CF0E0C9C2A90BA35005FA27A /* Action */,
-				CF0E0CA82A90BC6E005FA27A /* SnapKit */,
-			);
 			productName = Where_Am_I;
 			productReference = CF0E0C7F2A90B9F0005FA27A /* Where_Am_I.app */;
 			productType = "com.apple.product-type.application";
@@ -299,11 +318,6 @@
 				Base,
 			);
 			mainGroup = CF0E0C762A90B9F0005FA27A;
-			packageReferences = (
-				CF0E0C962A90BA2A005FA27A /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				CF0E0C9B2A90BA35005FA27A /* XCRemoteSwiftPackageReference "Action" */,
-				CF0E0CA72A90BC6E005FA27A /* XCRemoteSwiftPackageReference "SnapKit" */,
-			);
 			productRefGroup = CF0E0C802A90B9F0005FA27A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -325,6 +339,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38FF1E87646BDAE754B459B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Where_Am_I-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A851C9F2808B4DF7DCE33CCF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Where_Am_I/Pods-Where_Am_I-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Where_Am_I/Pods-Where_Am_I-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Where_Am_I/Pods-Where_Am_I-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CF0E0C7B2A90B9F0005FA27A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -333,6 +389,7 @@
 				CF04CB322A91D96F00492C10 /* Reactive+UIImageView.swift in Sources */,
 				CF0E0CAB2A90BDC0005FA27A /* SearchViewController.swift in Sources */,
 				CF0E0CBE2A90F06B005FA27A /* MKSearchService.swift in Sources */,
+				CF64D86A2A98954B000FB186 /* PlaceDataModel.xcdatamodeld in Sources */,
 				CF04CB3A2A921C4B00492C10 /* Place.swift in Sources */,
 				CF0E0CB62A90C5D5005FA27A /* BaseViewModel.swift in Sources */,
 				CF0E0CB82A90C6BD005FA27A /* BaseViewController.swift in Sources */,
@@ -360,6 +417,7 @@
 				CF0E0CAF2A90C28C005FA27A /* LocationProvider.swift in Sources */,
 				CF04CB302A91C4FB00492C10 /* Reactive+UIButton.swift in Sources */,
 				CF0E0CBC2A90CEF4005FA27A /* Reactive+UILabel.swift in Sources */,
+				CF64D8672A98949D000FB186 /* PlaceStorage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +551,7 @@
 		};
 		CF0E0C942A90B9F0005FA27A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C32548B6D6EB506C5022232 /* Pods-Where_Am_I.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -526,6 +585,7 @@
 		};
 		CF0E0C952A90B9F0005FA27A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43E6B9D1E5708EC2D82028F9 /* Pods-Where_Am_I.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -580,55 +640,18 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		CF0E0C962A90BA2A005FA27A /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
+/* Begin XCVersionGroup section */
+		CF64D8682A98954B000FB186 /* PlaceDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CF64D8692A98954B000FB186 /* PlaceDataModel.xcdatamodel */,
+			);
+			currentVersion = CF64D8692A98954B000FB186 /* PlaceDataModel.xcdatamodel */;
+			path = PlaceDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
 		};
-		CF0E0C9B2A90BA35005FA27A /* XCRemoteSwiftPackageReference "Action" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/Action";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		CF0E0CA72A90BC6E005FA27A /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		CF0E0C972A90BA2A005FA27A /* Differentiator */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF0E0C962A90BA2A005FA27A /* XCRemoteSwiftPackageReference "RxDataSources" */;
-			productName = Differentiator;
-		};
-		CF0E0C992A90BA2A005FA27A /* RxDataSources */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF0E0C962A90BA2A005FA27A /* XCRemoteSwiftPackageReference "RxDataSources" */;
-			productName = RxDataSources;
-		};
-		CF0E0C9C2A90BA35005FA27A /* Action */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF0E0C9B2A90BA35005FA27A /* XCRemoteSwiftPackageReference "Action" */;
-			productName = Action;
-		};
-		CF0E0CA82A90BC6E005FA27A /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CF0E0CA72A90BC6E005FA27A /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-/* End XCSwiftPackageProductDependency section */
+/* End XCVersionGroup section */
 	};
 	rootObject = CF0E0C772A90B9F0005FA27A /* Project object */;
 }
